@@ -42,6 +42,13 @@ for (const file of eventFiles) {
 const countingEvent = require('./commands/mod/counting');
 client.on(countingEvent.name, countingEvent.execute);
 
+// 加載日誌事件
+const logEvents = ['messageUpdate', 'messageDelete', 'messageCreate'];
+logEvents.forEach(event => {
+    const logEvent = require(`./events/logging`);
+    client.on(logEvent.name, logEvent.execute);
+});
+
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
 

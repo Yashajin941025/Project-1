@@ -1,28 +1,13 @@
 const { Events } = require('discord.js');
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const settings = require('../../set/settings');
 
-// 讀取當前數字
-function readCurrentNumber() {
-    const data = fs.readFileSync(path.resolve(__dirname, '../../currentNumber.json'), 'utf8');
-    return JSON.parse(data).number;
-}
-
-// 更新當前數字
-function updateCurrentNumber(newNumber) {
-    fs.writeFileSync(path.resolve(__dirname, '../../currentNumber.json'), JSON.stringify({ number: newNumber }), 'utf8');
-}
-
-// 讀取最後發言的用戶ID
-function readLastUserId() {
-    const data = fs.readFileSync(path.resolve(__dirname, '../../lastUser.json'), 'utf8');
-    return JSON.parse(data).userId;
-}
-
-// 更新最後發言的用戶ID
-function updateLastUserId(userId) {
-    fs.writeFileSync(path.resolve(__dirname, '../../lastUser.json'), JSON.stringify({ userId: userId }), 'utf8');
+// 寫入設置數據
+async function writeSettings(newSettings) {
+    const settingsPath = path.resolve(__dirname, '../../set/settings.js');
+    const settingsContent = `module.exports = ${JSON.stringify(newSettings, null, 4)};`;
+    await fs.writeFile(settingsPath, settingsContent, 'utf8');
 }
 
 module.exports = {
@@ -41,16 +26,17 @@ module.exports = {
                 const messageNumber = parseInt(message.content);
 
                 // 讀取當前數字和最後發言的用戶ID
-                const currentNumber = readCurrentNumber();
-                const lastUserId = readLastUserId();
+                const currentNumber = settings.currentNumber;
+                const lastUserId = settings.lastUserId;
 
                 // 檢查訊息是否為下一個預期的數字，並且發言者不是最後一個發言的用戶
                 if (messageNumber === currentNumber + 1 && message.author.id !== lastUserId) {
                     // 給出正確的數字反應
                     message.react('✅').catch(console.error);
                     // 更新當前數字和最後發言的用戶ID
-                    updateCurrentNumber(messageNumber);
-                    updateLastUserId(message.author.id);
+                    settings.currentNumber = messageNumber;
+                    settings.lastUserId = message.author.id;
+                    await writeSettings(settings);
                 } else {
                     // 如果數字不正確或用戶連續發言，刪除訊息
                     message.delete().catch(console.error);

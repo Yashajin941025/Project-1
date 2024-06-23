@@ -28,6 +28,8 @@ module.exports = {
 
         settings.countingChannelId = channel.id;
         settings.startingNumber = startNumber;
+        settings.currentNumber = startNumber;
+        settings.lastUserId = null;
 
         await writeSettings(settings);
 
