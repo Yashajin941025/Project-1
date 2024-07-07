@@ -6,16 +6,16 @@ module.exports = class BotUtils {
    * Check if the bot is up to date
    */
   static async checkForUpdates() {
-    const response = await getJson("https://api.github.com/repos/saiteja-madha/discord-js-bot/releases/latest");
+    const response = await getJson("https://api.github.com/repos/Yashajin941025/Project-1/releases/latest");
     if (!response.success) return error("最新版本檢查 : 無法檢查機器人更新");
     if (response.data) {
       if (
         require("@root/package.json").version.replace(/[^0-9]/g, "") >= response.data.tag_name.replace(/[^0-9]/g, "")
       ) {
-        success("VersionCheck: Your discord bot is up to date");
+        success("最新版本檢查：已經是最新的啦!");
       } else {
-        warn(`VersionCheck: ${response.data.tag_name} update is available`);
-        warn("download: https://github.com/saiteja-madha/discord-js-bot/releases/latest");
+        warn(`最新版本檢查: ${response.data.tag_name} 更新可用`);
+        warn("download: https://github.com/Yashajin941025/Project-1/releases/latest");
       }
     }
   }
@@ -64,16 +64,16 @@ module.exports = class BotUtils {
     return [
       {
         callback: ({ client, guildId }) => client.musicManager.getPlayer(guildId),
-        message: "🚫 No music is being played!",
+        message: "🚫 沒有播放音樂!",
       },
       {
         callback: ({ member }) => member.voice?.channelId,
-        message: "🚫 You need to join my voice channel.",
+        message: "🚫 你需要加入我的語音頻道.",
       },
       {
         callback: ({ member, client, guildId }) =>
           member.voice?.channelId === client.musicManager.getPlayer(guildId)?.channelId,
-        message: "🚫 You're not in the same voice channel.",
+        message: "🚫 你們不在同一個語音頻道。",
       },
     ];
   }
