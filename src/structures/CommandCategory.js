@@ -64,7 +64,7 @@ module.exports = {
     emoji: "🎵",
   },
   OWNER: {
-    name: "擁有者",
+    name: "開發者",
     image: "https://www.pinclipart.com/picdir/middle/531-5318253_web-designing-icon-png-clipart.png",
     emoji: "🤴",
   },
