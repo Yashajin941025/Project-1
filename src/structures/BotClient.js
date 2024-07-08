@@ -37,14 +37,16 @@ module.exports = class BotClient extends Client {
       restRequestTimeout: 20000,
     });
 
-    this.wait = require("util").promisify(setTimeout); // await client.wait(1000) - Wait 1 second
-    this.config = require("@root/config"); // load the config file
+    
+
+    this.wait = require("util").promisify(setTimeout); // wait client.wait(1000) - 等待 1 秒
+    this.config = require("@root/config"); // 載入設定檔
 
     /**
      * @type {import('@structures/Command')[]}
      */
-    this.commands = []; // store actual command
-    this.commandIndex = new Collection(); // store (alias, arrayIndex) pair
+    this.commands = []; // 儲存實際命令
+    this.commandIndex = new Collection(); // 儲存（別名，arrayIndex）對
 
     /**
      * @type {Collection<string, import('@structures/Command')>}
@@ -79,8 +81,8 @@ module.exports = class BotClient extends Client {
   }
 
   /**
-   * Load all events from the specified directory
-   * @param {string} directory directory containing the event files
+  * 載入指定目錄下的所有事件
+  * @param {string} 目錄 包含事件檔案的目錄
    */
   loadEvents(directory) {
     this.logger.log(`正在加載事件...`);

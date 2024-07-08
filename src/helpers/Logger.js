@@ -1,6 +1,7 @@
 const config = require("@root/config");
 const { EmbedBuilder, WebhookClient } = require("discord.js");
 const pino = require("pino");
+process.env.LANG = 'zh_TW.UTF-8';
 
 const webhookLogger = process.env.ERROR_LOGS ? new WebhookClient({ url: process.env.ERROR_LOGS }) : undefined;
 
