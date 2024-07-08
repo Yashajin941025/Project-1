@@ -15,36 +15,36 @@ module.exports = {
     minArgsCount: 1,
     subcommands: [
       {
-        trigger: "status <on|off>",
-        description: "enable or disable farewell message",
+        trigger: "狀態<on|off>",
+        description: "啟用 或 停用 告別訊息",
       },
       {
-        trigger: "channel <#channel>",
-        description: "configure farewell message",
+        trigger: "頻道 <#channel>",
+        description: "設定告別訊息",
       },
       {
-        trigger: "preview",
-        description: "preview the configured farewell message",
+        trigger: "預覽",
+        description: "預覽配置的告別訊息",
       },
       {
-        trigger: "desc <text>",
-        description: "set embed description",
+        trigger: "描述 <text>",
+        description: "設定嵌入描述",
       },
       {
-        trigger: "thumbnail <ON|OFF>",
-        description: "enable/disable embed thumbnail",
+        trigger: "縮圖 <ON|OFF>",
+        description: "enable/disable 嵌入縮圖",
       },
       {
         trigger: "color <hexcolor>",
-        description: "set embed color",
+        description: "嵌入 color",
       },
       {
-        trigger: "footer <text>",
-        description: "set embed footer content",
+        trigger: "嵌入頁腳 <text>",
+        description: "設定嵌入頁腳內容",
       },
       {
         trigger: "image <url>",
-        description: "set embed image",
+        description: "設定嵌入圖像",
       },
     ],
   },
