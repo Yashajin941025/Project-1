@@ -7,7 +7,7 @@ const { ApplicationCommandOptionType, ChannelType } = require("discord.js");
  */
 module.exports = {
   name: "welcome",
-  description: "setup welcome message",
+  description: "設置歡迎訊息",
   category: "ADMIN",
   userPermissions: ["ManageGuild"],
   command: {
@@ -20,15 +20,15 @@ module.exports = {
       },
       {
         trigger: "channel <#channel>",
-        description: "configure welcome message",
+        description: "配置歡迎訊息",
       },
       {
         trigger: "preview",
-        description: "preview the configured welcome message",
+        description: "預覽配置的歡迎訊息",
       },
       {
         trigger: "desc <text>",
-        description: "set embed description",
+        description: "設定嵌入描述",
       },
       {
         trigger: "thumbnail <ON|OFF>",

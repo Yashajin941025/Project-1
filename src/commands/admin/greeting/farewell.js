@@ -16,15 +16,15 @@ module.exports = {
     subcommands: [
       {
         trigger: "狀態<on|off>",
-        description: "啟用 或 停用 告別訊息",
+        description: "啟用 或 停用 退出訊息",
       },
       {
         trigger: "頻道 <#channel>",
-        description: "設定告別訊息",
+        description: "設定退出訊息",
       },
       {
         trigger: "預覽",
-        description: "預覽配置的告別訊息",
+        description: "預覽配置的退出訊息",
       },
       {
         trigger: "描述 <text>",
@@ -54,7 +54,7 @@ module.exports = {
     options: [
       {
         name: "status",
-        description: "enable or disable farewell message",
+        description: "啟用或停用退出訊息",
         type: ApplicationCommandOptionType.Subcommand,
         options: [
           {
@@ -77,17 +77,17 @@ module.exports = {
       },
       {
         name: "preview",
-        description: "preview the configured farewell message",
+        description: "預覽配置的退出訊息",
         type: ApplicationCommandOptionType.Subcommand,
       },
       {
         name: "channel",
-        description: "set farewell channel",
+        description: "設定退出頻道",
         type: ApplicationCommandOptionType.Subcommand,
         options: [
           {
-            name: "channel",
-            description: "channel name",
+            name: "頻道",
+            description: "頻道名稱",
             type: ApplicationCommandOptionType.Channel,
             channelTypes: [ChannelType.GuildText],
             required: true,
@@ -96,12 +96,12 @@ module.exports = {
       },
       {
         name: "desc",
-        description: "set embed description",
+        description: "設定嵌入描述",
         type: ApplicationCommandOptionType.Subcommand,
         options: [
           {
             name: "content",
-            description: "description content",
+            description: "描述內容",
             type: ApplicationCommandOptionType.String,
             required: true,
           },
@@ -109,12 +109,12 @@ module.exports = {
       },
       {
         name: "thumbnail",
-        description: "configure embed thumbnail",
+        description: "配置嵌入縮圖",
         type: ApplicationCommandOptionType.Subcommand,
         options: [
           {
             name: "status",
-            description: "thumbnail status",
+            description: "縮圖狀態",
             type: ApplicationCommandOptionType.String,
             required: true,
             choices: [
