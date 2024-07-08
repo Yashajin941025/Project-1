@@ -9,7 +9,7 @@ const withdraw = require("./sub/withdraw");
  */
 module.exports = {
   name: "bank",
-  description: "access to bank operations",
+  description: "進入銀行業務",
   category: "ECONOMY",
   botPermissions: ["EmbedLinks"],
   command: {
@@ -18,19 +18,19 @@ module.exports = {
     subcommands: [
       {
         trigger: "balance",
-        description: "check your balance",
+        description: "檢查您的餘額",
       },
       {
         trigger: "deposit <coins>",
-        description: "deposit coins to your bank account",
+        description: "將硬幣存入您的銀行帳戶",
       },
       {
         trigger: "withdraw <coins>",
-        description: "withdraw coins from your bank account",
+        description: "從您的銀行帳戶中提取硬幣",
       },
       {
         trigger: "transfer <user> <coins>",
-        description: "transfer coins to another user",
+        description: "將硬幣轉移給另一個用戶",
       },
     ],
   },

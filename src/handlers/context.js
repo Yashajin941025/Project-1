@@ -14,7 +14,7 @@ module.exports = {
       const remaining = getRemainingCooldown(interaction.user.id, context);
       if (remaining > 0) {
         return interaction.reply({
-          content: `You are on cooldown. You can again use the command after ${timeformat(remaining)}`,
+          content: `你正處於冷卻狀態。之後您可以再次使用該指令 ${timeformat(remaining)}`,
           ephemeral: true,
         });
       }
@@ -24,7 +24,7 @@ module.exports = {
     if (interaction.member && context.userPermissions && context.userPermissions?.length > 0) {
       if (!interaction.member.permissions.has(context.userPermissions)) {
         return interaction.reply({
-          content: `You need ${parsePermissions(context.userPermissions)} for this command`,
+          content: `你需要 ${parsePermissions(context.userPermissions)} 對於這個命令`,
           ephemeral: true,
         });
       }
@@ -34,7 +34,7 @@ module.exports = {
       await interaction.deferReply({ ephemeral: context.ephemeral });
       await context.run(interaction);
     } catch (ex) {
-      interaction.followUp("Oops! An error occurred while running the command");
+      interaction.followUp("哎呀！運行命令時出錯 ~ 如果可以~幫我告知給 管理員 或 開發者!!");
       interaction.client.logger.error("contextRun", ex);
     } finally {
       applyCooldown(interaction.user.id, context);

@@ -3,10 +3,10 @@ const { getUser } = require("@schemas/User");
 const { EMBED_COLORS, ECONOMY } = require("@root/config");
 
 module.exports = async (user, coins) => {
-  if (isNaN(coins) || coins <= 0) return "Please enter a valid amount of coins to deposit";
+  if (isNaN(coins) || coins <= 0) return "請輸入要存入的有效硬幣數量";
   const userDb = await getUser(user);
 
-  if (coins > userDb.bank) return `You only have ${userDb.bank}${ECONOMY.CURRENCY} coins in your bank`;
+  if (coins > userDb.bank) return `你只有 ${userDb.bank}${ECONOMY.CURRENCY} 你銀行裡的硬幣`;
 
   userDb.bank -= coins;
   userDb.coins += coins;
@@ -18,17 +18,17 @@ module.exports = async (user, coins) => {
     .setThumbnail(user.displayAvatarURL())
     .addFields(
       {
-        name: "Wallet",
+        name: "錢包",
         value: `${userDb.coins}${ECONOMY.CURRENCY}`,
         inline: true,
       },
       {
-        name: "Bank",
+        name: "銀行",
         value: `${userDb.bank}${ECONOMY.CURRENCY}`,
         inline: true,
       },
       {
-        name: "Net Worth",
+        name: "淨值",
         value: `${userDb.coins + userDb.bank}${ECONOMY.CURRENCY}`,
         inline: true,
       }

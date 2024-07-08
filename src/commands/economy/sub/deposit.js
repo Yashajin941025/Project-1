@@ -18,17 +18,17 @@ module.exports = async (user, coins) => {
     .setThumbnail(user.displayAvatarURL())
     .addFields(
       {
-        name: "Wallet",
+        name: "錢包",
         value: `${userDb.coins}${ECONOMY.CURRENCY}`,
         inline: true,
       },
       {
-        name: "Bank",
+        name: "銀行",
         value: `${userDb.bank}${ECONOMY.CURRENCY}`,
         inline: true,
       },
       {
-        name: "Net Worth",
+        name: "淨值",
         value: `${userDb.coins + userDb.bank}${ECONOMY.CURRENCY}`,
         inline: true,
       }

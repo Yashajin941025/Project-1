@@ -9,7 +9,7 @@ const channelPerms = ["EmbedLinks", "ReadMessageHistory", "AddReactions", "UseEx
  */
 module.exports = {
   name: "addrr",
-  description: "setup reaction role for the specified message",
+  description: "設定指定訊息的反應角色",
   category: "ADMIN",
   userPermissions: ["ManageGuild"],
   command: {
@@ -23,14 +23,14 @@ module.exports = {
     options: [
       {
         name: "channel",
-        description: "channel where the message exists",
+        description: "訊息存在的通道",
         type: ApplicationCommandOptionType.Channel,
         channelTypes: [ChannelType.GuildText],
         required: true,
       },
       {
         name: "message_id",
-        description: "message id to which reaction roles must be configured",
+        description: "必須配置反應角色的訊息 ID",
         type: ApplicationCommandOptionType.String,
         required: true,
       },
